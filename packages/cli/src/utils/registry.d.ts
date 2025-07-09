@@ -1,4 +1,4 @@
-import type { z } from 'zod'
+import { z } from 'zod'
 declare const componentSchema: z.ZodObject<
   {
     name: z.ZodString
