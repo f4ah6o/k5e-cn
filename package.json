@@ -3,7 +3,12 @@
   "version": "0.0.1",
   "private": true,
   "description": "A shadcn/ui-inspired component library for kintone customization",
-  "keywords": ["kintone", "components", "cli", "shadcn"],
+  "keywords": [
+    "kintone",
+    "components",
+    "cli",
+    "shadcn"
+  ],
   "license": "MIT",
   "author": "k5e-cn contributors",
   "repository": {

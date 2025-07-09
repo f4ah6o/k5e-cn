@@ -4,6 +4,7 @@ import chalk from 'chalk'
 import fs from 'fs-extra'
 import prompts from 'prompts'
 import { createSpinner, logger } from '../utils/logger.js'
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 export async function init(options) {
   logger.info('Initializing a new kintone project with @k5e/cn')

@@ -5,6 +5,7 @@ import fs from 'fs-extra'
 import prompts from 'prompts'
 import { createSpinner, logger } from '../utils/logger.js'
 import { getAllComponents, getComponent } from '../utils/registry.js'
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 export async function add(components, options) {
   const cwd = process.cwd()

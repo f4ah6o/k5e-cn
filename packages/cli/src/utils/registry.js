@@ -2,6 +2,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import fs from 'fs-extra'
 import { z } from 'zod'
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const componentSchema = z.object({
   name: z.string(),

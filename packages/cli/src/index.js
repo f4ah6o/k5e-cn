@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 import { Command } from 'commander'
-import packageJson from '../package.json' assert { type: 'json' }
+import packageJson from '../package.json' with { type: 'json' }
+
 import { add } from './commands/add.js'
 import { init } from './commands/init.js'
 import { list } from './commands/list.js'
+
 const program = new Command()
 program
   .name('k5e-cn')
