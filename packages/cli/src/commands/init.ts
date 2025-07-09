@@ -77,10 +77,10 @@ export async function init(options: InitOptions) {
         format: 'biome format --write .',
       },
       devDependencies: {
-        '@biomejs/biome': '^1.8.3',
-        vite: '^5.3.0',
+        '@biomejs/biome': '^2.1.1',
+        vite: '^6.0.7',
         ...(useTypescript && {
-          typescript: '^5.5.0',
+          typescript: '^5.7.3',
           '@types/kintone-js-sdk': '^1.0.0',
         }),
       },
@@ -90,7 +90,7 @@ export async function init(options: InitOptions) {
 
     // Create biome.json
     const biomeConfig = {
-      $schema: 'https://biomejs.dev/schemas/1.8.3/schema.json',
+      $schema: 'https://biomejs.dev/schemas/2.1.1/schema.json',
       organizeImports: {
         enabled: true,
       },

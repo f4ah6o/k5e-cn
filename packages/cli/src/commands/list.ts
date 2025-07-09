@@ -37,8 +37,14 @@ export async function list(options: ListOptions) {
       logger.break()
     }
   } catch (error) {
-    logger.error('Failed to list components')
-    console.error(error)
+    if (error instanceof Error && error.message.includes('ENOENT')) {
+      logger.error('Failed to load component registry.')
+      logger.info('This might be due to a corrupted installation. Please try reinstalling:')
+      logger.info('  pnpm dlx k5e-cn@latest list')
+    } else {
+      logger.error('Failed to list components')
+      logger.info(`Error details: ${error instanceof Error ? error.message : String(error)}`)
+    }
     process.exit(1)
   }
 }
