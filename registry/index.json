@@ -1,0 +1,39 @@
+{
+  "components": [
+    {
+      "name": "table-filter",
+      "description": "Advanced filtering for kintone record lists",
+      "files": ["components/table-filter.ts"],
+      "events": ["app.record.index.show"],
+      "category": "data-display"
+    },
+    {
+      "name": "form-validator",
+      "description": "Form validation with custom rules",
+      "files": ["components/form-validator.ts"],
+      "events": ["app.record.create.show", "app.record.edit.show"],
+      "category": "form"
+    },
+    {
+      "name": "conditional-fields",
+      "description": "Show/hide fields based on conditions",
+      "files": ["components/conditional-fields.ts"],
+      "events": ["app.record.create.show", "app.record.edit.show", "app.record.create.change", "app.record.edit.change"],
+      "category": "form"
+    },
+    {
+      "name": "bulk-update",
+      "description": "Bulk record updates UI",
+      "files": ["components/bulk-update.ts"],
+      "events": ["app.record.index.show"],
+      "category": "data-manipulation"
+    },
+    {
+      "name": "export-enhanced",
+      "description": "Enhanced CSV/Excel export functionality",
+      "files": ["components/export-enhanced.ts"],
+      "events": ["app.record.index.show"],
+      "category": "data-export"
+    }
+  ]
+}
