@@ -1,0 +1,230 @@
+---
+title: Form Validator
+description: Real-time form validation with custom rules for kintone
+---
+
+# Form Validator
+
+Advanced form validation component that provides real-time validation feedback with customizable rules.
+
+## Features
+
+* **Multiple validation types**: required, email, URL, number, length, pattern, custom
+* **Real-time validation**: Validate on change or blur
+* **Cross-field validation**: Access to entire record for complex validations
+* **Custom error messages**: Configurable messages for each rule
+* **kintone styling**: Uses official kintone CSS classes
+
+## Installation
+
+```bash
+pnpm dlx k5e-cn@latest add form-validator
+```
+
+## Basic Usage
+
+The component automatically validates forms on submit. To customize validation rules:
+
+```javascript
+// In your kintone customization
+kintone.events.on(['app.record.create.show', 'app.record.edit.show'], (event) => {
+  const config = {
+    validations: [
+      {
+        field: 'email',
+        rules: [
+          { type: 'required', message: 'Email is required' },
+          { type: 'email', message: 'Please enter a valid email' }
+        ]
+      },
+      {
+        field: 'age',
+        rules: [
+          { type: 'number', message: 'Age must be a number' },
+          { type: 'minLength', value: 18, message: 'Must be 18 or older' }
+        ]
+      }
+    ],
+    validateOnBlur: true,
+    validateOnChange: false
+  };
+
+  return k5eFormValidator.init(event, config);
+});
+```
+
+## Configuration
+
+### Main Configuration Object
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `validations` | `ValidationRule[]` | `[]` | Array of field validation rules |
+| `showErrorsInline` | `boolean` | `true` | Show error messages below fields |
+| `validateOnChange` | `boolean` | `false` | Validate while typing |
+| `validateOnBlur` | `boolean` | `true` | Validate when field loses focus |
+| `customStyles` | `object` | See below | Custom CSS classes |
+
+### Validation Rule Types
+
+#### Required
+```javascript
+{ type: 'required', message: 'This field is required' }
+```
+
+#### Email
+```javascript
+{ type: 'email', message: 'Please enter a valid email' }
+```
+
+#### URL
+```javascript
+{ type: 'url', message: 'Please enter a valid URL' }
+```
+
+#### Number
+```javascript
+{ type: 'number', message: 'Please enter a number' }
+```
+
+#### Min Length
+```javascript
+{ type: 'minLength', value: 5, message: 'Minimum 5 characters' }
+```
+
+#### Max Length
+```javascript
+{ type: 'maxLength', value: 100, message: 'Maximum 100 characters' }
+```
+
+#### Pattern (RegEx)
+```javascript
+{ type: 'pattern', value: '^[A-Z]', message: 'Must start with uppercase' }
+```
+
+#### Custom Validation
+```javascript
+{
+  type: 'custom',
+  message: 'Passwords do not match',
+  validator: (value, record) => {
+    return value === record.password_confirm.value;
+  }
+}
+```
+
+## Advanced Examples
+
+### Cross-field Validation
+
+```javascript
+const config = {
+  validations: [
+    {
+      field: 'end_date',
+      rules: [{
+        type: 'custom',
+        message: 'End date must be after start date',
+        validator: (value, record) => {
+          if (!value || !record.start_date.value) return true;
+          return new Date(value) > new Date(record.start_date.value);
+        }
+      }]
+    }
+  ]
+};
+```
+
+### Complex Email Validation
+
+```javascript
+const config = {
+  validations: [
+    {
+      field: 'company_email',
+      rules: [
+        { type: 'required', message: 'Company email is required' },
+        { type: 'email', message: 'Please enter a valid email' },
+        {
+          type: 'pattern',
+          value: '@(company1|company2)\\.com$',
+          message: 'Must be a company email address'
+        }
+      ]
+    }
+  ]
+};
+```
+
+### Conditional Validation
+
+```javascript
+const config = {
+  validations: [
+    {
+      field: 'phone',
+      rules: [{
+        type: 'custom',
+        message: 'Phone is required when email is empty',
+        validator: (value, record) => {
+          // Phone is required only if email is empty
+          if (!record.email.value) {
+            return value && value.trim().length > 0;
+          }
+          return true;
+        }
+      }]
+    }
+  ]
+};
+```
+
+## API Reference
+
+### Global Methods
+
+The component exposes these methods on `window.k5eFormValidator`:
+
+#### init(event, config)
+Initialize form validation with configuration.
+
+#### validateOnSubmit(event, config)
+Validate all fields on form submission.
+
+#### validateField(fieldCode, value, rule, record, config)
+Validate a single field. Returns error message or null.
+
+#### validateAllFields(event, config)
+Validate all configured fields. Returns `{ isValid: boolean, errors: Record<string, string> }`.
+
+## Styling
+
+The component uses kintone's official CSS classes by default:
+
+* `.kintoneplugin-input-error` - Applied to invalid inputs
+* `.kintoneplugin-error-message` - Error message container
+
+You can customize these classes:
+
+```javascript
+const config = {
+  customStyles: {
+    errorClass: 'my-error-input',
+    errorMessageClass: 'my-error-message'
+  }
+};
+```
+
+## Browser Support
+
+* Chrome (latest)
+* Firefox (latest)
+* Safari (latest)
+* Edge (latest)
+
+## Events Used
+
+* `app.record.create.show`
+* `app.record.edit.show`
+* `app.record.create.submit`
+* `app.record.edit.submit`
