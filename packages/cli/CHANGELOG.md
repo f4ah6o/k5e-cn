@@ -1,5 +1,18 @@
 # k5e-cn
 
+## 1.0.1
+
+### Patch Changes
+
+- Fix CI pipeline and update dependencies
+
+  - Fix TypeScript type definitions for kintone global
+  - Update Biome to v2.1.1 and migrate configuration
+  - Fix import assertions syntax (assert → with)
+  - Remove pnpm version specification from CI to avoid conflicts
+  - Add Dependabot configuration for automated dependency updates
+  - Fix various lint and format issues
+
 ## 1.0.0
 
 ### Major Changes
