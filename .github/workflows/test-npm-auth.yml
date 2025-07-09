@@ -1,0 +1,27 @@
+name: Test NPM Authentication
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-npm-auth:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org/
+
+      - name: Test NPM Authentication
+        run: npm whoami
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Check npm config
+        run: npm config list
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
