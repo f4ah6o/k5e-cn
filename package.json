@@ -24,7 +24,7 @@
     "build": "pnpm -r build",
     "dev": "pnpm -r dev",
     "lint": "biome check .",
-    "lint:fix": "biome check --apply .",
+    "lint:fix": "biome check --write .",
     "format": "biome format --write .",
     "format:check": "biome format .",
     "typecheck": "pnpm -r typecheck",
