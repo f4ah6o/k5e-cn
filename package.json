@@ -21,7 +21,11 @@
     "lint": "biome check .",
     "lint:fix": "biome check --apply .",
     "format": "biome format --write .",
-    "typecheck": "pnpm -r typecheck"
+    "format:check": "biome format .",
+    "typecheck": "pnpm -r typecheck",
+    "docs:dev": "pnpm --filter @k5e/www dev",
+    "docs:build": "pnpm --filter @k5e/www build",
+    "docs:serve": "pnpm --filter @k5e/www serve"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
