@@ -20,6 +20,43 @@ This project is a shadcn/ui-inspired component library for kintone customization
 - TypeScript-first development
 - Desktop-first (mobile support planned for later)
 
+## Development Philosophy
+
+### Code That Fits in Your Head
+
+Following the principles from "Code That Fits in Your Head" for sustainable, comprehensible code:
+
+#### Managing Complexity
+- Recognize the limits of human cognitive capacity
+- Code must fit in your head and be understandable by humans
+- Prioritize readability and comprehension over pure technical optimization
+
+#### Development Approach
+- Start with minimal vertical slices (complete features from UI to backend)
+- Use incremental development with continuous integration
+- Practice regular refactoring
+- Follow the Red/Green/Refactor methodology
+
+#### Coding Practices
+- Leverage checklists to maximize existing skills
+- Implement comprehensive testing
+- Make small, frequent Git commits
+- Maintain proper encapsulation
+- Minimize cyclomatic complexity
+
+#### API Design Principles
+- Design APIs with clear affordances
+- Separate concerns effectively
+- Write code that clearly communicates intent
+- Protect invariant conditions
+
+#### Team Development
+- Practice pair programming and mob programming
+- Take regular breaks
+- Maintain consistent development rhythm
+
+Reference: https://www.oreilly.co.jp/books/9784814400799/
+
 ## Technical Stack
 
 - **Package Manager**: pnpm
