@@ -76,4 +76,4 @@ That's it! You now have a fully functional table filter in your kintone app.
 
 - [Installation Guide](/docs/getting-started/installation)
 - [Quick Start Tutorial](/docs/getting-started/quick-start)
-- [Component Documentation](/docs/category/components)
+- [Component Documentation](/docs/components/table-filter)

@@ -18,7 +18,7 @@ function HomepageHeader() {
           </Link>
           <Link
             className="button button--secondary button--lg"
-            to="https://github.com/f4ah6o/k5e-cn"
+            href="https://github.com/f4ah6o/k5e-cn"
           >
             View on GitHub
           </Link>
