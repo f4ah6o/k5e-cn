@@ -1,0 +1,49 @@
+# GitHub Issue Labels Configuration
+
+# Component related
+- name: "component: new"
+  color: "0052CC"
+  description: "新しいコンポーネントの提案"
+
+- name: "component: enhancement"
+  color: "5319E7"
+  description: "既存コンポーネントの改善"
+
+# Issue types
+- name: "type: bug"
+  color: "D73A4A"
+  description: "バグ報告"
+
+- name: "type: feature"
+  color: "A2EEEF"
+  description: "新機能のリクエスト"
+
+- name: "type: documentation"
+  color: "0075CA"
+  description: "ドキュメントの改善"
+
+- name: "type: question"
+  color: "D876E3"
+  description: "質問"
+
+# Priority
+- name: "priority: high"
+  color: "D93F0B"
+  description: "優先度：高"
+
+- name: "priority: medium"
+  color: "FBCA04"
+  description: "優先度：中"
+
+- name: "priority: low"
+  color: "B4E7CE"
+  description: "優先度：低"
+
+# Status
+- name: "status: help wanted"
+  color: "008672"
+  description: "コントリビューター募集中"
+
+- name: "status: good first issue"
+  color: "7057FF"
+  description: "初めての貢献に最適"
