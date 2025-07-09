@@ -4,18 +4,10 @@ import chalk from 'chalk'
 import fs from 'fs-extra'
 import prompts from 'prompts'
 import { createSpinner, logger } from '../utils/logger.js'
-
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-
-interface InitOptions {
-  name?: string
-  typescript?: boolean
-}
-
-export async function init(options: InitOptions) {
+export async function init(options) {
   logger.info('Initializing a new kintone project with @k5e/cn')
   logger.break()
-
   const response = await prompts([
     {
       type: options.name ? null : 'text',
@@ -37,31 +29,24 @@ export async function init(options: InitOptions) {
       initial: true,
     },
   ])
-
   const projectName = options.name || response.projectName
   const useTypescript = options.typescript ?? response.useTypescript
   const projectPath = path.join(process.cwd(), projectName)
-
   if (await fs.pathExists(projectPath)) {
     logger.error(`Directory ${projectName} already exists`)
     process.exit(1)
   }
-
   const spinner = createSpinner('Creating project structure...')
   spinner.start()
-
   try {
     // Create project directory
     await fs.ensureDir(projectPath)
-
     // Copy template files
     const templatePath = path.join(__dirname, '../../templates/default')
     await fs.copy(templatePath, projectPath)
-
     // Create basic structure
     await fs.ensureDir(path.join(projectPath, 'src'))
     await fs.ensureDir(path.join(projectPath, 'dist'))
-
     // Create package.json
     const packageJson = {
       name: projectName,
@@ -85,9 +70,7 @@ export async function init(options: InitOptions) {
         }),
       },
     }
-
     await fs.writeJSON(path.join(projectPath, 'package.json'), packageJson, { spaces: 2 })
-
     // Create biome.json
     const biomeConfig = {
       $schema: 'https://biomejs.dev/schemas/1.8.3/schema.json',
@@ -110,7 +93,6 @@ export async function init(options: InitOptions) {
       },
     }
     await fs.writeJSON(path.join(projectPath, 'biome.json'), biomeConfig, { spaces: 2 })
-
     // Create tsconfig.json if TypeScript
     if (useTypescript) {
       const tsConfig = {
@@ -132,7 +114,6 @@ export async function init(options: InitOptions) {
       }
       await fs.writeJSON(path.join(projectPath, 'tsconfig.json'), tsConfig, { spaces: 2 })
     }
-
     // Create vite.config.js
     const viteConfig = `import { defineConfig } from 'vite'
 
@@ -154,7 +135,6 @@ export default defineConfig({
 })
 `
     await fs.writeFile(path.join(projectPath, 'vite.config.js'), viteConfig)
-
     // Create entry file
     const entryContent = `(() => {
   'use strict'
@@ -168,7 +148,6 @@ export default defineConfig({
       path.join(projectPath, 'src', `index.${useTypescript ? 'ts' : 'js'}`),
       entryContent
     )
-
     // Create .gitignore
     const gitignore = `node_modules/
 dist/
@@ -178,9 +157,7 @@ dist/
 .env.local
 `
     await fs.writeFile(path.join(projectPath, '.gitignore'), gitignore)
-
     spinner.succeed('Project created successfully!')
-
     logger.break()
     logger.success(`Created ${chalk.bold(projectName)} at ${projectPath}`)
     logger.break()
@@ -196,3 +173,4 @@ dist/
     process.exit(1)
   }
 }
+//# sourceMappingURL=init.js.map

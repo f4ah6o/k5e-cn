@@ -1,6 +1,4 @@
-(() => {
-  'use strict'
-
+;(() => {
   interface FilterConfig {
     fields?: string[]
     saveKey?: string
@@ -26,7 +24,7 @@
       this.config = { ...defaultConfig, ...config } as Required<FilterConfig>
     }
 
-    init(event: any) {
+    init(event: KintoneEvent) {
       if (!this.isIndexPage()) return event
 
       const table = this.getTable()
@@ -121,17 +119,17 @@
       if (!tbody) return
 
       const searchTerms = filterValue.toLowerCase().trim().split(/\s+/)
-      
-      this.originalRows.forEach((row) => {
+
+      for (const row of this.originalRows) {
         const rowText = this.getRowText(row).toLowerCase()
-        const matches = searchTerms.every(term => rowText.includes(term))
-        
+        const matches = searchTerms.every((term) => rowText.includes(term))
+
         if (matches || filterValue === '') {
           row.style.display = ''
         } else {
           row.style.display = 'none'
         }
-      })
+      }
 
       this.updateResultsCount(filterValue)
     }
@@ -143,12 +141,14 @@
 
       const texts: string[] = []
       const cells = row.querySelectorAll('td')
-      
+
       cells.forEach((cell, index) => {
-        const header = document.querySelector(`.recordlist-header-cell-gaia:nth-child(${index + 1})`)
+        const header = document.querySelector(
+          `.recordlist-header-cell-gaia:nth-child(${index + 1})`
+        )
         const fieldCode = header?.getAttribute('data-field-code')
-        
-        if (fieldCode && this.config.fields!.includes(fieldCode)) {
+
+        if (fieldCode && this.config.fields?.includes(fieldCode)) {
           texts.push(cell.textContent || '')
         }
       })
@@ -157,10 +157,12 @@
     }
 
     private updateResultsCount(filterValue: string) {
-      const visibleCount = this.originalRows.filter(row => row.style.display !== 'none').length
+      const visibleCount = this.originalRows.filter((row) => row.style.display !== 'none').length
       const totalCount = this.originalRows.length
 
-      let countElement = this.filterContainer?.querySelector('.k5e-filter-count')
+      let countElement = this.filterContainer?.querySelector(
+        '.k5e-filter-count'
+      ) as HTMLElement | null
       if (!countElement) {
         countElement = document.createElement('div')
         countElement.className = 'k5e-filter-count'
@@ -184,7 +186,7 @@
 
     private saveFilter(value: string) {
       if (!this.config.saveKey) return
-      
+
       const key = `k5e-filter-${kintone.app.getId()}-${this.config.saveKey}`
       if (value) {
         localStorage.setItem(key, value)
@@ -195,10 +197,10 @@
 
     private loadSavedFilter() {
       if (!this.config.saveKey || !this.filterInput) return
-      
+
       const key = `k5e-filter-${kintone.app.getId()}-${this.config.saveKey}`
       const savedValue = localStorage.getItem(key)
-      
+
       if (savedValue) {
         this.filterInput.value = savedValue
         this.filterInput.dispatchEvent(new Event('input'))
@@ -212,5 +214,5 @@
     position: 'top',
   })
 
-  kintone.events.on('app.record.index.show', (event: any) => filter.init(event))
+  kintone.events.on('app.record.index.show', (event: KintoneEvent) => filter.init(event))
 })()

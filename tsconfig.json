@@ -19,6 +19,6 @@
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["packages/**/*", "apps/**/*", "components/**/*"],
+  "include": ["packages/**/*", "apps/**/*", "components/**/*", "types/**/*"],
   "exclude": ["**/node_modules", "**/dist", "**/build", "**/.docusaurus"]
 }

@@ -18,7 +18,12 @@
       "name": "conditional-fields",
       "description": "Show/hide fields based on conditions",
       "files": ["components/conditional-fields.ts"],
-      "events": ["app.record.create.show", "app.record.edit.show", "app.record.create.change", "app.record.edit.change"],
+      "events": [
+        "app.record.create.show",
+        "app.record.edit.show",
+        "app.record.create.change",
+        "app.record.edit.change"
+      ],
       "category": "form"
     },
     {

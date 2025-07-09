@@ -2,11 +2,7 @@
   "name": "k5e-cn",
   "version": "1.0.0",
   "description": "CLI for @k5e/cn - kintone component library",
-  "keywords": [
-    "kintone",
-    "cli",
-    "components"
-  ],
+  "keywords": ["kintone", "cli", "components"],
   "license": "MIT",
   "author": "k5e-cn contributors",
   "type": "module",
@@ -15,10 +11,7 @@
   "bin": {
     "k5e-cn": "./dist/index.js"
   },
-  "files": [
-    "dist",
-    "templates"
-  ],
+  "files": ["dist", "templates"],
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",

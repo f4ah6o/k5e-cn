@@ -26,6 +26,6 @@ const sidebars = {
       items: ['guides/customization', 'guides/typescript', 'guides/best-practices'],
     },
   ],
-};
+}
 
-export default sidebars;
+export default sidebars
