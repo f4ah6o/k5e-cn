@@ -70,7 +70,7 @@ export async function add(components: string[], options: AddOptions) {
       }
 
       for (const file of component.files) {
-        const sourcePath = path.join(__dirname, '../../../../', file)
+        const sourcePath = path.join(__dirname, '../../', file)
         const fileName = path.basename(file)
         const destPath = path.join(srcDir, fileName)
 

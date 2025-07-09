@@ -18,7 +18,9 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm build",
+    "postbuild": "chmod +x dist/index.js"
   },
   "dependencies": {
     "commander": "^12.0.0",

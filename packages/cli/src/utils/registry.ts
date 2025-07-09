@@ -21,7 +21,7 @@ export type Component = z.infer<typeof componentSchema>
 export type Registry = z.infer<typeof registrySchema>
 
 export async function getRegistry(): Promise<Registry> {
-  const registryPath = path.join(__dirname, '../../../../registry/index.json')
+  const registryPath = path.join(__dirname, '../../registry/index.json')
   const registryContent = await fs.readJSON(registryPath)
   return registrySchema.parse(registryContent)
 }

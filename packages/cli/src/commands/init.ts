@@ -55,7 +55,7 @@ export async function init(options: InitOptions) {
     await fs.ensureDir(projectPath)
 
     // Copy template files
-    const templatePath = path.join(__dirname, '../../../../templates/default')
+    const templatePath = path.join(__dirname, '../../templates/default')
     await fs.copy(templatePath, projectPath)
 
     // Create basic structure
@@ -89,10 +89,27 @@ export async function init(options: InitOptions) {
     await fs.writeJSON(path.join(projectPath, 'package.json'), packageJson, { spaces: 2 })
 
     // Create biome.json
-    await fs.copy(
-      path.join(__dirname, '../../../../biome.json'),
-      path.join(projectPath, 'biome.json')
-    )
+    const biomeConfig = {
+      "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+      "organizeImports": {
+        "enabled": true
+      },
+      "linter": {
+        "enabled": true,
+        "rules": {
+          "recommended": true
+        }
+      },
+      "formatter": {
+        "enabled": true,
+        "formatWithErrors": false,
+        "indentStyle": "space",
+        "indentWidth": 2,
+        "lineWidth": 100,
+        "lineEnding": "lf"
+      }
+    }
+    await fs.writeJSON(path.join(projectPath, 'biome.json'), biomeConfig, { spaces: 2 })
 
     // Create tsconfig.json if TypeScript
     if (useTypescript) {
