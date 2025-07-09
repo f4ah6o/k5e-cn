@@ -301,21 +301,38 @@ Following shadcn/ui model:
 - ✅ Component documentation structure
 - ✅ Getting started guides
 
-#### 5. npm Publication Preparation
+#### 5. npm Publication
 - ✅ Package configuration for npm
 - ✅ Changesets for version management
 - ✅ GitHub Actions for automated releases
 - ✅ .npmignore and build scripts
 - ✅ LICENSE file (MIT)
+- ✅ Published to npm registry as `k5e-cn`
+- ✅ Released v1.0.0 and v1.0.1
 
 ### Current Status
 
 **Documentation Site**: https://f4ah6o.github.io/k5e-cn/
 
-**Ready for npm publication**: The CLI package is ready to be published to npm. Requires:
-1. npm account creation/login
-2. NPM_TOKEN secret in GitHub repository
-3. Initial changeset and version bump
+**npm Package**: 
+- Published to npm as `k5e-cn`
+- Version: 1.0.1
+- Install: `pnpm dlx k5e-cn@latest`
+
+### Latest Updates (2025-07-09)
+
+#### CI/CD Improvements
+- ✅ Fixed CI pipeline errors (typecheck and lint)
+- ✅ Updated Biome from 1.8.3 to 2.1.1
+- ✅ Added global TypeScript definitions for kintone
+- ✅ Fixed import assertions syntax (assert → with)
+- ✅ Configured Dependabot for automated dependency updates
+
+#### npm Package v1.0.1
+- ✅ Published first patch release
+- ✅ Fixed CI/CD pipeline
+- ✅ Improved build process stability
+- ✅ Updated all dependencies
 
 ### Next Steps
 
@@ -325,19 +342,12 @@ Following shadcn/ui model:
    - bulk-update
    - export-enhanced
 
-2. **npm Publication**:
-   ```bash
-   pnpm changeset
-   pnpm version
-   pnpm release
-   ```
-
-3. **Enhanced Documentation**:
+2. **Enhanced Documentation**:
    - Interactive component previews
    - More detailed guides
    - Video tutorials
 
-4. **Community Building**:
+3. **Community Building**:
    - Example projects
    - Component contribution guide
    - Discord/Slack community
