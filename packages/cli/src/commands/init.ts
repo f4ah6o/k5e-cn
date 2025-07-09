@@ -73,7 +73,7 @@ export async function init(options: InitOptions) {
         dev: 'vite',
         preview: 'vite preview',
         lint: 'biome check .',
-        'lint:fix': 'biome check --apply .',
+        'lint:fix': 'biome check --write .',
         format: 'biome format --write .',
       },
       devDependencies: {
@@ -81,7 +81,6 @@ export async function init(options: InitOptions) {
         vite: '^6.0.7',
         ...(useTypescript && {
           typescript: '^5.7.3',
-          '@types/kintone-js-sdk': '^1.0.0',
         }),
       },
     }
