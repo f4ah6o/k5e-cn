@@ -35,6 +35,8 @@ Following the shadcn/ui approach:
 3. **No black box** - All code is transparent and modifiable
 4. **Pick what you need** - Only add components you actually use
 
+> **Note**: Unlike shadcn/ui which configures existing React projects, @k5e/cn's `init` command creates new projects from scratch - perfect for starting fresh kintone customizations.
+
 ## Core Principles
 
 ### Code That Fits in Your Head

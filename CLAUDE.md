@@ -173,6 +173,24 @@ pnpm dlx k5e-cn@latest add table-filter form-validator
 pnpm dlx k5e-cn@latest list
 ```
 
+## Important: Difference from shadcn/ui
+
+While k5e-cn is inspired by shadcn/ui, there's a fundamental difference in the `init` command:
+
+| Command | Purpose | What it does | Prerequisites |
+|---------|---------|--------------|---------------|
+| **k5e-cn init** | Project generator | Creates a NEW project from scratch with complete directory structure, build config, and starter files | None - creates everything |
+| **shadcn/ui init** | Project configurator | Configures an EXISTING React/Next.js project to use shadcn/ui components | Requires existing React project |
+
+### Why this difference?
+
+- **k5e-cn**: Designed for developers starting fresh kintone customizations. Similar to `create-react-app` or `create-next-app`.
+- **shadcn/ui**: Assumes you already have a React project and just want to add the component system.
+
+This reflects the different ecosystems:
+- kintone developers often start from zero with each customization
+- React developers typically already have a project setup when they discover shadcn/ui
+
 ## Development Guidelines
 
 ### Code Style

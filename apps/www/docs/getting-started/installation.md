@@ -29,6 +29,37 @@ This command will:
 3. Install necessary dependencies
 4. Create a basic entry file
 
+## Important: Difference from shadcn/ui
+
+:::info Key Difference
+While @k5e/cn is inspired by shadcn/ui, the `init` command works differently:
+:::
+
+| Tool | `init` Command | Purpose | When to Use |
+|------|---------------|---------|-------------|
+| **@k5e/cn** | Creates NEW project | Project generator | Starting a fresh kintone customization |
+| **shadcn/ui** | Configures EXISTING project | Project configurator | Adding components to existing React app |
+
+### Example Usage
+
+**@k5e/cn** - Creating a new kintone project:
+```bash
+# This creates a new directory with everything you need
+pnpm dlx k5e-cn@latest init my-kintone-app
+cd my-kintone-app
+```
+
+**shadcn/ui** - Adding to existing React project:
+```bash
+# Run this inside your existing React project
+cd my-existing-react-app
+pnpm dlx shadcn@latest init
+```
+
+This fundamental difference reflects the different development workflows:
+- **kintone developers** often start each customization from scratch
+- **React developers** typically add shadcn/ui to projects that already exist
+
 ## Manual Installation
 
 If you prefer to add @k5e/cn to an existing project:
