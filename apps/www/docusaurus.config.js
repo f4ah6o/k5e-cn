@@ -10,7 +10,7 @@ import { themes as prismThemes } from 'prism-react-renderer'
 const config = {
   title: '@k5e/cn',
   tagline: 'A shadcn/ui-inspired component library for kintone customization',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.svg',
 
   // Set the production url of your site here
   url: 'https://f4ah6o.github.io',
@@ -57,7 +57,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/social-card.jpg',
+      image: 'img/social-card.svg',
       navbar: {
         title: '@k5e/cn',
         logo: {
